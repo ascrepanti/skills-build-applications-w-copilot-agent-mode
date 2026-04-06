@@ -21,6 +21,15 @@ from rest_framework.decorators import api_view
 from .views import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet
 
 
+from .views import (
+    users_simple,
+    teams_simple,
+    activities_simple,
+    leaderboard_simple,
+    workouts_simple,
+)
+
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'teams', TeamViewSet)
@@ -45,8 +54,17 @@ def api_root(request, format=None):
         'workouts': base_url + 'workouts/',
     })
 
+
 urlpatterns = [
     path('', api_root, name='api_root'),
     path('admin/', admin.site.urls),
+    path('api/users/', users_simple),
+    path('api/teams/', teams_simple),
+    path('api/activities/', activities_simple),
+    path('api/leaderboard/', leaderboard_simple),
+    path('api/workouts/', workouts_simple),
     path('api/', include(router.urls)),
 ]
+
+
+
