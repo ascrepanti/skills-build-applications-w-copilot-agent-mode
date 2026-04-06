@@ -26,12 +26,21 @@ SECRET_KEY = 'django-insecure-=sn@730i03u$=bbbz(=_hu=*z6@hx=e47kmd7-tt-&k6r$feon
 DEBUG = True
 
 
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DEBUG = True
+
 ALLOWED_HOSTS = []
 
 CODESPACE_NAME = os.environ.get("CODESPACE_NAME")
 
 if CODESPACE_NAME:
     ALLOWED_HOSTS.append(f"{CODESPACE_NAME}-8000.app.github.dev")
+
 
 
 
